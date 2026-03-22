@@ -6,6 +6,8 @@ import path from 'path';
 import boxen from 'boxen';
 import { createClient, getDefaultModel, debugApiKey } from '../utils/openrouter.js';
 
+const aexTheme = chalk.hex('#74ffd8');
+
 const SYSTEM_PROMPT = `You are AEX Code, an advanced coding agent. You provide short, actionable coding assistance. 
 If asked to edit a file, provide the full file contents or explicitly outline what to change in the file.
 Try to use <tool_call> JSON format for file writes if possible.
@@ -15,12 +17,12 @@ let conversationHistory = [];
 
 export async function chatCommand() {
     console.clear();
-    const chatHeader = boxen(chalk.greenBright.bold('A E X   C O D E'), {
-        padding: 1, margin: 1, borderStyle: 'bold', borderColor: 'green'
+    const chatHeader = boxen(aexTheme.bold('A E X   C O D E'), {
+        padding: 1, margin: 1, borderStyle: 'bold', borderColor: '#74ffd8'
     });
     console.log(chatHeader);
-    console.log(chalk.green(`  ■ Target Model    : ${chalk.gray(getDefaultModel())}`));
-    console.log(chalk.green(`  ■ Exit Command    : ${chalk.gray("'exit'")}\n`));
+    console.log(aexTheme(`  ■ Target Model    : ${chalk.gray(getDefaultModel())}`));
+    console.log(aexTheme(`  ■ Exit Command    : ${chalk.gray("'exit'")}\n`));
 
     let client;
     try {
@@ -38,12 +40,12 @@ export async function chatCommand() {
             {
                 type: 'input',
                 name: 'userInput',
-                message: chalk.bold.green('■ USER : '),
+                message: aexTheme.bold('■ USER : '),
             }
         ]);
 
         if (userInput.trim().toLowerCase() === 'exit') {
-            console.log(chalk.green('\n■ SESSION TERMINATED.'));
+            console.log(aexTheme('\n■ SESSION TERMINATED.'));
             break;
         }
 
@@ -51,8 +53,8 @@ export async function chatCommand() {
 
         process.stdout.write('\n');
         const spinner = ora({
-            text: chalk.italic.green('AEX PROCESSSING...'),
-            color: 'green',
+            text: aexTheme.italic('AEX PROCESSSING...'),
+            color: 'cyan', // closest default spinner color to the hex
         }).start();
         
         try {
@@ -63,12 +65,12 @@ export async function chatCommand() {
             });
 
             spinner.stop();
-            process.stdout.write(`${chalk.bgGreen.black.bold(' ■ AEX AGENT ')} `);
+            process.stdout.write(`${chalk.bgHex('#74ffd8').black.bold(' ■ AEX AGENT ')} `);
             
             let fullContent = '';
             for await (const chunk of response) {
                 const text = chunk.choices[0]?.delta?.content || '';
-                process.stdout.write(chalk.green(text));
+                process.stdout.write(aexTheme(text));
                 fullContent += text;
             }
             console.log('\n');

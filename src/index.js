@@ -21,21 +21,23 @@ const packageJson = JSON.parse(
 
 const program = new Command();
 
-const bannerText = figlet.textSync('AEX Code', { font: 'ANSI Shadow', horizontalLayout: 'fitted' });
-const coloredBanner = chalk.greenBright(bannerText);
-const rawTagline = ' NEXT-GEN OPENROUTER CODING AGENT - POWERED BY AI EXTENSION ';
+const aexTheme = chalk.hex('#74ffd8');
 
-const finalBanner = boxen(`${coloredBanner}\n\n${chalk.bgGreen.black.bold(rawTagline)}`, {
+const bannerText = figlet.textSync('AEX Code', { font: 'ANSI Shadow', horizontalLayout: 'fitted' });
+const coloredBanner = aexTheme(bannerText);
+const rawTagline = ' POWERED BY AI EXTENSION - NEXT-GEN CODING AGENT ';
+
+const finalBanner = boxen(`${coloredBanner}\n\n${chalk.bgHex('#74ffd8').black.bold(rawTagline)}`, {
   padding: 1,
   margin: 1,
   borderStyle: 'bold',
-  borderColor: 'green',
+  borderColor: '#74ffd8',
   textAlignment: 'center',
 });
 
 program
   .name('aex-code')
-  .description(finalBanner)
+  .description(`${finalBanner}\n${chalk.dim('A powerful CLI agent optimized for OpenRouter free-tier LLMs.')}`)
   .version(packageJson.version);
 
 program
