@@ -1,4 +1,4 @@
-![AEX Code Cover](aex-code-cover.jpg)
+![AEX Code Cover](https://raw.githubusercontent.com/AbidHasanRafi/aex-code/main/aex-code-cover.jpg)
 # A E X - C O D E
 
 AEX Code is a CLI application that functions as an advanced coding agent similar to Claude Code. It is optimized for free-tier usage via OpenRouter models and provides a clean UI with both interactive and command-based workflows. This project was developed by [Md. Abid Hasan Rafi](https://abidhasanrafi.github.io) and powered by [AI Extension](https://aiextension.org).

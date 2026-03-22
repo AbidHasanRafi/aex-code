@@ -1,14 +1,22 @@
 {
   "name": "aex-code",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.1",
+  "description": "Next-Gen OpenRouter Coding Agent CLI - Powered by AI Extension",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/aex-code.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "aex-code",
+    "ai",
+    "cli",
+    "coding-agent",
+    "agent",
+    "openrouter",
+    "llm"
+  ],
+  "author": "Md. Abid Hasan Rafi",
+  "license": "MIT",
   "type": "module",
   "dependencies": {
     "boxen": "^7.1.1",
@@ -22,6 +30,17 @@
     "ora": "^5.4.1"
   },
   "bin": {
-    "aex-code": "./bin/aex-code.js"
-  }
+    "aex-code": "bin/aex-code.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abidhasanrafi/aex-code.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abidhasanrafi/aex-code/issues"
+  },
+  "homepage": "https://github.com/abidhasanrafi/aex-code#readme"
 }
