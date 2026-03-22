@@ -80,8 +80,11 @@ export async function chatCommand() {
             spinner.stop();
             console.log(chalk.bgRed.white.bold(' ■ ERROR '));
             if (e.status === 429) {
-                console.log(chalk.red(`\nRate Limit or Provider Error (429): The active model (${getDefaultModel()}) is currently overloaded.`));
-                console.log(chalk.yellow(`Tip: Try swapping your model using:\naex-code config --set-model "google/gemini-2.0-flash-lite-preview-02-05:free"\n`));
+                console.log(chalk.red(`\nModel Overloaded or Unavailable (429 Error)`));
+                console.log(chalk.white(`This is not an issue with AEX Code. The specific model you are using right now (${getDefaultModel()}) is currently experiencing too much global traffic on OpenRouter's free tier and is temporarily rejecting requests.`));
+                console.log(chalk.yellow(`\nHow to fix this instantly:`));
+                console.log(chalk.yellow(`1. Go to https://openrouter.ai/models and find another free or paid model based on your subscription that is currently active.`));
+                console.log(chalk.yellow(`2. Set it using the config command, for example:\n   aex-code config --set-model "YOUR_PREFERRED_MODEL_NAME"\n`));
             } else if (e.status === 401) {
                 console.log(chalk.red(`\nUnauthorized (401): Your API key is invalid or not recognized by OpenRouter.`));
             } else {
